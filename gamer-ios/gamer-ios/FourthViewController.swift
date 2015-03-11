@@ -12,8 +12,15 @@ class FourthViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        println("initial viewDidLoad of the fourth VC")
+        
         // Do any additional setup after loading the view.
+    }
+    override func viewDidAppear(animated: Bool) {
+        println("fourth VC about to appear")
+    }
+    override func viewWillDisappear(animated: Bool) {
+        println("fourth VC about to Disappear")
     }
 
     override func didReceiveMemoryWarning() {

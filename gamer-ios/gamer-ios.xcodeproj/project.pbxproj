@@ -14,6 +14,8 @@
 		716AB5601AAFC07E00526A0B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 716AB55F1AAFC07E00526A0B /* Images.xcassets */; };
 		716AB5631AAFC07E00526A0B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 716AB5611AAFC07E00526A0B /* LaunchScreen.xib */; };
 		716AB56F1AAFC07E00526A0B /* gamer_iosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AB56E1AAFC07E00526A0B /* gamer_iosTests.swift */; };
+		716AB5A71AB0C06900526A0B /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AB5A61AB0C06900526A0B /* ThirdViewController.swift */; };
+		716AB5A91AB0C34E00526A0B /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 716AB5A81AB0C34E00526A0B /* FourthViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 		716AB5681AAFC07E00526A0B /* gamer-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "gamer-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		716AB56D1AAFC07E00526A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		716AB56E1AAFC07E00526A0B /* gamer_iosTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = gamer_iosTests.swift; sourceTree = "<group>"; };
+		716AB5A61AB0C06900526A0B /* ThirdViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		716AB5A81AB0C34E00526A0B /* FourthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 				716AB5581AAFC07E00526A0B /* FirstViewController.swift */,
 				716AB55A1AAFC07E00526A0B /* SecondViewController.swift */,
 				716AB55C1AAFC07E00526A0B /* Main.storyboard */,
+				716AB5A81AB0C34E00526A0B /* FourthViewController.swift */,
+				716AB5A61AB0C06900526A0B /* ThirdViewController.swift */,
 				716AB55F1AAFC07E00526A0B /* Images.xcassets */,
 				716AB5611AAFC07E00526A0B /* LaunchScreen.xib */,
 				716AB5541AAFC07E00526A0B /* Supporting Files */,
@@ -217,7 +223,9 @@
 			files = (
 				716AB55B1AAFC07E00526A0B /* SecondViewController.swift in Sources */,
 				716AB5571AAFC07E00526A0B /* AppDelegate.swift in Sources */,
+				716AB5A71AB0C06900526A0B /* ThirdViewController.swift in Sources */,
 				716AB5591AAFC07E00526A0B /* FirstViewController.swift in Sources */,
+				716AB5A91AB0C34E00526A0B /* FourthViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

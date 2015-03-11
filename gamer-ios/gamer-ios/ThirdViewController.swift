@@ -12,10 +12,17 @@ class ThirdViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("initial viewDidLoad of the third VC")
 
         // Do any additional setup after loading the view.
     }
-
+    override func viewDidAppear(animated: Bool) {
+        println("third VC about to appear")
+    }
+    override func viewWillDisappear(animated: Bool) {
+        println("third VC about to Disappear")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
