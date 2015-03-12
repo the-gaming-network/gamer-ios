@@ -15,25 +15,15 @@ class FeedViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)
             -> UITableViewCell {
                 
-        var cell = tableView.dequeueReusableCellWithIdentifier("feed-cell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("FeedPostCell", forIndexPath: indexPath) as FeedPostCell
             
         let post = posts[indexPath.row] as FeedPost
         
-        if let userNameLabel = cell.viewWithTag(100) as? UILabel {
-            userNameLabel.text = post.userName
-        }
-        if let groupNameLabel = cell.viewWithTag(101) as? UILabel {
-            groupNameLabel.text = post.groupName
-        }
-        if let postContentLabel = cell.viewWithTag(102) as? UILabel {
-            postContentLabel.text = post.postContent
-        }
-        if let postCommentsLabel = cell.viewWithTag(103) as? UILabel {
-            postCommentsLabel.text = "\(post.commentCount) comments"
-        }
-        if let postUpvoteLabel = cell.viewWithTag(104) as? UILabel {
-            postUpvoteLabel.text = "\(post.upvoteCount) upvotes"
-        }
+        cell.userNameLabel.text = post.userName
+        cell.groupNameLabel.text = post.groupName
+        cell.postContentLabel.text = post.postContent
+        cell.postCommentsLabel.text = "\(post.commentCount) comments"
+        cell.postUpvotesLabel.text = "\(post.upvoteCount) upvotes"
         
         var postImage = UIImage(named:"Ian")
             
@@ -47,9 +37,7 @@ class FeedViewController: UITableViewController {
             postImage = UIImage(named:"Andreas")
         }
         
-        if let postProfilePic = cell.viewWithTag(105) as? UIImageView {
-            postProfilePic.image = postImage
-        }
+        cell.postProfilePic.image = postImage
                 
         return cell
     }
