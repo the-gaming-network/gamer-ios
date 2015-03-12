@@ -12,11 +12,15 @@ class FeedPost: NSObject {
     var userName: String
     var groupName: String
     var postContent: String
+    var commentCount: Int
+    var upvoteCount: Int
     
-    init(userName: String, groupName: String, postContent: String) {
+    init(userName: String, groupName: String, postContent: String, commentCount: Int, upvoteCount: Int) {
         self.userName = userName
         self.groupName = groupName
         self.postContent = postContent
+        self.commentCount = commentCount
+        self.upvoteCount = upvoteCount
         super.init()
     }
 }

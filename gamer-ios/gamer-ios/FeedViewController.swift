@@ -17,24 +17,40 @@ class FeedViewController: UITableViewController {
                 
         var cell = tableView.dequeueReusableCellWithIdentifier("feed-cell", forIndexPath: indexPath) as UITableViewCell
             
-        let post = posts[indexPath.row]
-        cell.textLabel?.text = "\(post.userName) in \(post.groupName)"
-        cell.detailTextLabel?.text = post.postContent
-            
-        var myImage = UIImage(named:"Ian")
+        let post = posts[indexPath.row] as FeedPost
+        
+        if let userNameLabel = cell.viewWithTag(100) as? UILabel {
+            userNameLabel.text = post.userName
+        }
+        if let groupNameLabel = cell.viewWithTag(101) as? UILabel {
+            groupNameLabel.text = post.groupName
+        }
+        if let postContentLabel = cell.viewWithTag(102) as? UILabel {
+            postContentLabel.text = post.postContent
+        }
+        if let postCommentsLabel = cell.viewWithTag(103) as? UILabel {
+            postCommentsLabel.text = "\(post.commentCount) comments"
+        }
+        if let postUpvoteLabel = cell.viewWithTag(104) as? UILabel {
+            postUpvoteLabel.text = "\(post.upvoteCount) upvotes"
+        }
+        
+        var postImage = UIImage(named:"Ian")
             
         if post.userName == "@ianjsikora" {
-            myImage = UIImage(named:"Ian")
-        }else if post.userName == "MotherRussia" {
-            myImage = UIImage(named:"Janna")
+            postImage = UIImage(named:"Ian")
+        }else if post.userName == "@MotherRussia" {
+            postImage = UIImage(named:"Janna")
         }else if post.userName == "@SingaporeSling" {
-            myImage = UIImage(named:"Andy")
+            postImage = UIImage(named:"Andy")
         }else if post.userName == "@BabyMocker" {
-            myImage = UIImage(named:"Andreas")
+            postImage = UIImage(named:"Andreas")
         }
-            
-        cell.imageView?.image = myImage
-            
+        
+        if let postProfilePic = cell.viewWithTag(105) as? UIImageView {
+            postProfilePic.image = postImage
+        }
+                
         return cell
     }
 
