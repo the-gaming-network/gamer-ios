@@ -2,8 +2,8 @@
 //  gamer_iosTests.swift
 //  gamer-iosTests
 //
-//  Created by Leland on 3/10/15.
-//  Copyright (c) 2015 gamer. All rights reserved.
+//  Created by Ian Sikora on 3/11/15.
+//  Copyright (c) 2015 rocketu. All rights reserved.
 //
 
 import UIKit

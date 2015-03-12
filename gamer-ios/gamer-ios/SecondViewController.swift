@@ -2,13 +2,13 @@
 //  SecondViewController.swift
 //  gamer-ios
 //
-//  Created by Leland on 3/10/15.
-//  Copyright (c) 2015 gamer. All rights reserved.
+//  Created by Ian Sikora on 3/11/15.
+//  Copyright (c) 2015 rocketu. All rights reserved.
 //
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class DiscoverViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
