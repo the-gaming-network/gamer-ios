@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D87p" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D87p" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="kfD-cf-Jjp">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Feed View Controller-->
+        <!--GAMER-->
         <scene sceneID="r3n-2r-0Je">
             <objects>
                 <tableViewController id="RGT-He-e2C" customClass="FeedViewController" customModule="gamer_ios" customModuleProvider="target" sceneMemberID="viewController">
@@ -103,6 +103,7 @@
                                     <outlet property="postProfilePic" destination="2V8-Jo-JVs" id="h1h-9F-bOm"/>
                                     <outlet property="postUpvotesLabel" destination="NfB-Bf-jKt" id="IZs-BH-gQv"/>
                                     <outlet property="userNameLabel" destination="SHy-rM-isZ" id="k67-Nj-LOS"/>
+                                    <segue destination="NcQ-Dc-T66" kind="showDetail" trigger="accessoryAction" id="gBi-Qf-hzD"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -111,11 +112,141 @@
                             <outlet property="delegate" destination="RGT-He-e2C" id="cFf-os-7H1"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="bJv-9D-42O"/>
+                    <navigationItem key="navigationItem" title="GAMER" id="bJv-9D-42O">
+                        <barButtonItem key="rightBarButtonItem" systemItem="compose" id="7f7-nm-Ch3">
+                            <connections>
+                                <segue destination="eh5-2b-8G5" kind="modal" id="nS0-cP-wbK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="YEp-Ih-txZ" id="QYy-ZC-Xnf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A7C-iu-IBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="YEp-Ih-txZ">
+                    <connections>
+                        <outlet property="delegate" destination="RGT-He-e2C" id="jko-sP-gdM"/>
+                        <outlet property="searchContentsController" destination="RGT-He-e2C" id="frw-eR-6GC"/>
+                        <outlet property="searchResultsDataSource" destination="RGT-He-e2C" id="uTP-ft-WhS"/>
+                        <outlet property="searchResultsDelegate" destination="RGT-He-e2C" id="GGr-H1-hIZ"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3139" y="-1255"/>
+            <point key="canvasLocation" x="3138" y="-1212"/>
+        </scene>
+        <!--New Discussion-->
+        <scene sceneID="Shz-a7-pW8">
+            <objects>
+                <tableViewController id="fbn-Bv-eDw" customClass="NewDiscussionDetailsViewController" customModule="gamer_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="xtd-2E-Q60">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Group Name" id="K8M-l8-a18">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="ru3-Re-Ysp" detailTextLabel="LCU-r9-eLe" style="IBUITableViewCellStyleValue1" id="Rtn-kN-fs6">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rtn-kN-fs6" id="UD4-6v-bOX">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Small Worlds SF" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ru3-Re-Ysp">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="More Options" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LCU-r9-eLe">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Discussion Post" id="dI1-dr-8Uy">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="wgr-hW-Yhl">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wgr-hW-Yhl" id="BFO-0q-hmR">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tie-PW-hug">
+                                                    <rect key="frame" x="8" y="8" width="584" height="184"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="fbn-Bv-eDw" id="E8F-zx-nHu"/>
+                            <outlet property="delegate" destination="fbn-Bv-eDw" id="ggK-37-DsT"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="New Discussion" id="TSs-up-RRn">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="1lL-Sf-Vg5">
+                            <connections>
+                                <segue destination="mZy-GZ-Pmo" kind="unwind" identifier="CancelNewDiscussion" unwindAction="cancelToFeedViewController:" id="YrE-I3-zJh"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="etq-gN-qcG">
+                            <connections>
+                                <segue destination="mZy-GZ-Pmo" kind="unwind" identifier="SaveNewDiscussion" unwindAction="saveNewDiscussion:" id="VtQ-M8-uwC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="groupTextField" destination="ru3-Re-Ysp" id="zw1-L4-cCF"/>
+                        <outlet property="moreOptionsLabel" destination="LCU-r9-eLe" id="AM6-G6-hnv"/>
+                        <outlet property="newPostContent" destination="tie-PW-hug" id="Fph-Vd-xBa"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lp5-8D-nMi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="mZy-GZ-Pmo" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="4763" y="-1860"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="avB-iw-Nha">
+            <objects>
+                <navigationController id="eh5-2b-8G5" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="sQs-Ir-txC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="fbn-Bv-eDw" kind="relationship" relationship="rootViewController" id="x8C-en-l5S"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7D4-uM-1GR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3991" y="-1852"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="k5T-4S-JNY">
+            <objects>
+                <viewController id="NcQ-Dc-T66" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hYO-hv-jaF"/>
+                        <viewControllerLayoutGuide type="bottom" id="PMP-K0-a4H"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="evm-mL-1hk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oQu-wy-R7h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3998" y="-679"/>
         </scene>
         <!--Discover-->
         <scene sceneID="wg7-f3-ORb">
@@ -237,6 +368,9 @@
                                 <state key="normal" title="Advance to App">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="49e-Tb-3d3" kind="show" id="chQ-je-hnu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -256,15 +390,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLV-fH-VpR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-603" y="-60"/>
-        </scene>
-        <!--Page View Controller-->
-        <scene sceneID="L6M-0v-Exd">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="Z3u-N6-gtE" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1BI-T2-fa2" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="513" y="-60"/>
+            <point key="canvasLocation" x="495" y="-60"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
