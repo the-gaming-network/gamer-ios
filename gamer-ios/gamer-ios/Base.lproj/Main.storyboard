@@ -151,7 +151,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rtn-kN-fs6" id="UD4-6v-bOX">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Small Worlds SF" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ru3-Re-Ysp">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Group Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ru3-Re-Ysp">
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -165,6 +165,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="4pJ-0Z-oUu" kind="push" identifier="PickGroup" id="AEy-oL-XrI"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -213,6 +216,45 @@
                 <exit id="mZy-GZ-Pmo" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="4763" y="-1860"/>
+        </scene>
+        <!--Choose Group-->
+        <scene sceneID="bpg-zS-bNN">
+            <objects>
+                <tableViewController id="4pJ-0Z-oUu" customClass="NewDiscussionGroupPickerViewController" customModule="gamer_ios" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="uyO-9u-WFi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GroupCell" textLabel="3xo-Z9-Z7J" style="IBUITableViewCellStyleDefault" id="BkV-wI-tTb">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BkV-wI-tTb" id="3Jq-9m-hlH">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3xo-Z9-Z7J">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="eZB-wd-eGc" kind="unwind" identifier="SaveSelectedGroup" unwindAction="selectedGroup:" id="rn5-lK-5IB"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="4pJ-0Z-oUu" id="f0e-En-FOa"/>
+                            <outlet property="delegate" destination="4pJ-0Z-oUu" id="lzb-Pr-iwV"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Choose Group" id="4Gt-gm-xLc"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cX2-UB-Kqy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="eZB-wd-eGc" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="5584" y="-1860"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="avB-iw-Nha">

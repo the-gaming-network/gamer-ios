@@ -26,9 +26,7 @@ class FeedViewController: UITableViewController {
             var dataVal: NSData =  NSURLConnection.sendSynchronousRequest(request1, returningResponse: response, error:nil)!
             var err: NSError
             var feedData: NSArray = NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSArray
-            println(feedData)
             let json = JSON(feedData)
-            println(indexPath.row)
             if let feedArray = json.array {
                 var userName: String! = feedArray[indexPath.row]["owner_name"].string
                 var groupName: String! = feedArray[indexPath.row]["group"].string
@@ -50,7 +48,7 @@ class FeedViewController: UITableViewController {
             cell.postCommentsLabel.text = "\(post.commentCount) comments"
             cell.postUpvotesLabel.text = "\(post.upvoteCount) upvotes"
             cell.postProfilePic.image = UIImage(named:post.postImage)
-            
+            println("cellForRowAtIndexPath \(posts)")
             return cell
     }
     
@@ -82,17 +80,12 @@ class FeedViewController: UITableViewController {
     @IBAction func saveNewDiscussion(segue:UIStoryboardSegue) {
         let newDiscussionDetailsViewController = segue.sourceViewController as NewDiscussionDetailsViewController
         
-//        //add the new post to the post array
-//        feedContent.append(newDiscussionDetailsViewController.newPost)
-        
-        //update the tableView
+        // update the tableView
         let indexPath = NSIndexPath(forRow: 0, inSection: 0)
         tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-//        tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//            return feedContent.count + 1
-//        }
+//        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
         
-        //hide the detail view controller
+        // hide the detail view controller
         dismissViewControllerAnimated(true, completion: nil)
     }
 
