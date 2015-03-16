@@ -24,7 +24,7 @@ class NewDiscussionDetailsViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "SaveNewDiscussion" {
-            newPost = FeedPost(userName: "@ianjsikora", groupName: self.groupTextField.text!, postContent: self.newPostContent.text, commentCount: 0, upvoteCount: 0)
+            newPost = FeedPost(userName: "@ianjsikora", groupName: self.groupTextField.text!, postContent: self.newPostContent.text, postImage: "Ian", commentCount: 0, upvoteCount: 0)
         }
     }
     
