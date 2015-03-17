@@ -36,6 +36,7 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
         var userEmail = user.objectForKey("email") as String
         println("User Email: \(userEmail)")
         println("User Email: \(user)")
+        println("User Picture")
     }
     
     func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {

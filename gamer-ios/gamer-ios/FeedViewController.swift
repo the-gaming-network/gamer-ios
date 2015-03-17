@@ -12,32 +12,36 @@ class FeedViewController: UITableViewController {
     
     var posts: [FeedPost] = []
     
+    func loadFeedData(userID: Int) {
+        let feedDataURL = "http://10.12.4.41:8000/Feed.json"
+        let urlPath: String = feedDataURL
+        var url: NSURL = NSURL(string: urlPath)!
+        var request1: NSURLRequest = NSURLRequest(URL: url)
+        var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?
+        >=nil
+        var error: NSErrorPointer = nil
+        var dataVal: NSData =  NSURLConnection.sendSynchronousRequest(request1, returningResponse: response, error:nil)!
+        var err: NSError
+        var feedData: NSArray = NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSArray
+        let json = JSON(feedData)
+        if let feedArray = json.array {
+            for post in feedArray {
+                var userName: String! = post["owner_name"].string
+                var groupName: String! = post["group"].string
+                var postContent: String! = post["text"].string
+                var commentCount: Int! = post["comments"].int
+                var upvoteCount: Int! = post["likes"].int
+                var postImage: String! = post["image_url"].string
+                var postKey: Int! = post["pk"].int
+                var post = FeedPost(userName: userName!, groupName: groupName!, postContent: postContent!, postImage: postImage!, commentCount: commentCount!, upvoteCount: upvoteCount!, postKey: postKey)
+                self.posts.append(post)
+            }
+        }
+    }
+    
     // Code to populate the feed
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath)
         -> UITableViewCell {
-            
-            let feedDataURL = "http://10.12.4.41:8000/Feed.json"
-            let urlPath: String = feedDataURL
-            var url: NSURL = NSURL(string: urlPath)!
-            var request1: NSURLRequest = NSURLRequest(URL: url)
-            var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?
-            >=nil
-            var error: NSErrorPointer = nil
-            var dataVal: NSData =  NSURLConnection.sendSynchronousRequest(request1, returningResponse: response, error:nil)!
-            var err: NSError
-            var feedData: NSArray = NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSArray
-            let json = JSON(feedData)
-            if let feedArray = json.array {
-                var userName: String! = feedArray[indexPath.row]["owner_name"].string
-                var groupName: String! = feedArray[indexPath.row]["group"].string
-                var postContent: String! = feedArray[indexPath.row]["text"].string
-                var commentCount: Int! = feedArray[indexPath.row]["comments"].int
-                var upvoteCount: Int! = feedArray[indexPath.row]["likes"].int
-                var postImage: String! = feedArray[indexPath.row]["image_url"].string
-                var postKey: Int! = feedArray[indexPath.row]["pk"].int
-                var post = FeedPost(userName: userName!, groupName: groupName!, postContent: postContent!, postImage: postImage!, commentCount: commentCount!, upvoteCount: upvoteCount!, postKey: postKey)
-                self.posts.append(post)
-                }
             
             let cell = tableView.dequeueReusableCellWithIdentifier("FeedPostCell", forIndexPath: indexPath) as FeedPostCell
             let post = self.posts[indexPath.row] as FeedPost
@@ -69,7 +73,8 @@ class FeedViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        loadFeedData(1)
+        return posts.count
     }
     
     
