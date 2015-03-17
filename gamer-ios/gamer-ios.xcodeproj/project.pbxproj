@@ -11,6 +11,7 @@
 		6A0C78BF1AB20766009E2D4C /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0C78BE1AB20766009E2D4C /* FeedViewController.swift */; };
 		6A0C78C31AB23256009E2D4C /* FeedPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0C78C21AB23256009E2D4C /* FeedPostCell.swift */; };
 		6A0C78C51AB23961009E2D4C /* NewDiscussionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0C78C41AB23961009E2D4C /* NewDiscussionDetailsViewController.swift */; };
+		6A8F57F31AB79B1700D4BBF1 /* IndividualPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8F57F21AB79B1700D4BBF1 /* IndividualPostView.swift */; };
 		6AA9CB7E1AB10D08007CD655 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA9CB7D1AB10D08007CD655 /* AppDelegate.swift */; };
 		6AA9CB821AB10D08007CD655 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA9CB811AB10D08007CD655 /* SecondViewController.swift */; };
 		6AA9CB851AB10D08007CD655 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AA9CB831AB10D08007CD655 /* Main.storyboard */; };
@@ -43,6 +44,7 @@
 		6A0C78BE1AB20766009E2D4C /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		6A0C78C21AB23256009E2D4C /* FeedPostCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedPostCell.swift; sourceTree = "<group>"; };
 		6A0C78C41AB23961009E2D4C /* NewDiscussionDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDiscussionDetailsViewController.swift; sourceTree = "<group>"; };
+		6A8F57F21AB79B1700D4BBF1 /* IndividualPostView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndividualPostView.swift; sourceTree = "<group>"; };
 		6AA9CB781AB10D08007CD655 /* gamer-ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "gamer-ios.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AA9CB7C1AB10D08007CD655 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6AA9CB7D1AB10D08007CD655 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				6A0C78BE1AB20766009E2D4C /* FeedViewController.swift */,
+				6A8F57F21AB79B1700D4BBF1 /* IndividualPostView.swift */,
 				6A0C78C21AB23256009E2D4C /* FeedPostCell.swift */,
 				6A0C78BC1AB2039C009E2D4C /* FeedPost.swift */,
 			);
@@ -313,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AA9CBAD1AB1149D007CD655 /* LoginViewController.swift in Sources */,
+				6A8F57F31AB79B1700D4BBF1 /* IndividualPostView.swift in Sources */,
 				6A0C78BF1AB20766009E2D4C /* FeedViewController.swift in Sources */,
 				6AD19E8C1AB3918700243183 /* SwiftyJSON.swift in Sources */,
 				6AA9CB821AB10D08007CD655 /* SecondViewController.swift in Sources */,

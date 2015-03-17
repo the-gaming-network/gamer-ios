@@ -1,15 +1,15 @@
 //
-//  FeedViewController.swift
+//  IndividualPostView.swift
 //  gamer-ios
 //
-//  Created by Ian Sikora on 3/12/15.
+//  Created by Ian Sikora on 3/16/15.
 //  Copyright (c) 2015 rocketu. All rights reserved.
 //
 
 import UIKit
 
-class FeedViewController: UITableViewController {
-    
+class IndividualPostView: UITableViewController {
+
     var posts: [FeedPost] = []
     
     // Code to populate the feed
@@ -37,7 +37,7 @@ class FeedViewController: UITableViewController {
                 var postKey: Int! = feedArray[indexPath.row]["pk"].int
                 var post = FeedPost(userName: userName!, groupName: groupName!, postContent: postContent!, postImage: postImage!, commentCount: commentCount!, upvoteCount: upvoteCount!, postKey: postKey)
                 self.posts.append(post)
-                }
+            }
             
             let cell = tableView.dequeueReusableCellWithIdentifier("FeedPostCell", forIndexPath: indexPath) as FeedPostCell
             let post = self.posts[indexPath.row] as FeedPost
@@ -54,9 +54,15 @@ class FeedViewController: UITableViewController {
     }
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,30 +70,18 @@ class FeedViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK: - Table view data source
+
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        // #warning Potentially incomplete method implementation.
+        // Return the number of sections.
+        return 2
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete method implementation.
+        // Return the number of rows in the section.
         return 5
-    }
-    
-    
-    // Functions to control the add new discussion modals
-    @IBAction func cancelToFeedViewController(segue:UIStoryboardSegue) {
-        
-    }
-    
-    @IBAction func saveNewDiscussion(segue:UIStoryboardSegue) {
-        let newDiscussionDetailsViewController = segue.sourceViewController as NewDiscussionDetailsViewController
-        
-        // update the tableView
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-//        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-        
-        // hide the detail view controller
-        dismissViewControllerAnimated(true, completion: nil)
     }
 
 }
