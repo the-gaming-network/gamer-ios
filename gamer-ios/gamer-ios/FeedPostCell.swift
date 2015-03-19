@@ -29,3 +29,25 @@ class FeedPostCell: UITableViewCell {
     }
 
 }
+
+class PostCell: UITableViewCell {
+    
+    @IBOutlet weak var userNameLabel: UILabel!
+    @IBOutlet weak var groupNameLabel: UILabel!
+    @IBOutlet weak var postContentLabel: UILabel!
+    @IBOutlet weak var postCommentsLabel: UILabel!
+    @IBOutlet weak var postUpvotesLabel: UILabel!
+    @IBOutlet weak var postProfilePic: UIImageView!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
+}

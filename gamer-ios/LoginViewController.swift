@@ -5,9 +5,6 @@
 //  Created by Ian Sikora on 3/11/15.
 //  Copyright (c) 2015 rocketu. All rights reserved.
 //
-
-import UIKit
-
 import UIKit
 
 class LoginViewController: UIViewController, FBLoginViewDelegate {
@@ -36,6 +33,17 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
         var userEmail = user.objectForKey("email") as String
         println("User Email: \(userEmail)")
         println("User Email: \(user)")
+        var myToken = FBSession.activeSession().accessTokenData.accessToken
+        let net = Net(baseUrlString: "http://ec2-52-11-124-82.us-west-2.compute.amazonaws.com/")
+        let url = "rest-auth/facebook/"
+        let params = ["access_token": myToken]
+        println(params)
+        net.POST(url, params: params, successHandler: { responseData in
+            let result = responseData.json(error: nil)
+            NSLog("result: \(result)")
+            }, failureHandler: { error in
+                NSLog("Error")
+        })
     }
     
     func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
