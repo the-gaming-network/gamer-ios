@@ -10,20 +10,15 @@ import UIKit
 
 class NewDiscussionGroupPickerViewController: UITableViewController {
 
-    var groups:[String]!
+    var groups:[GroupsNames] = []
     var selectedGroup:String? = nil
     var selectedGroupIndex:Int? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        groups = [
-            "Small Worlds SF",
-            "Riskey Business",
-            "Avalon Lovers",
-            "Spin the Bottle",
-            "Texas Hold'em Poker",
-            "Tic-Tac-Toe"]
+        reloadGroupData()
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -41,7 +36,9 @@ class NewDiscussionGroupPickerViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("GroupCell", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel?.text = groups[indexPath.row]
+        let group = groups[indexPath.row] as GroupsNames
+        
+        cell.textLabel?.text = group.groupName
         
         if indexPath.row == selectedGroupIndex {
             cell.accessoryType = .Checkmark
@@ -61,11 +58,31 @@ class NewDiscussionGroupPickerViewController: UITableViewController {
         }
         
         selectedGroupIndex = indexPath.row
-        selectedGroup = groups[indexPath.row]
+        selectedGroup = groups[indexPath.row].groupName
         
         //update the checkmark for the current row
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.accessoryType = .Checkmark
+    }
+    
+    func reloadGroupData(){
+        DataManager.getGroupsDataWithSuccess{ (groupsData) -> Void in
+            println("Request returned")
+            let json = JSON(data: groupsData)
+            if let groupsArray = json.array {
+                for group in groupsArray {
+                    var groupName: String! = group["name"].string
+                    var groupKey: Int! = group["pk"].int
+                    var group = GroupsNames(groupName: groupName!, groupKey: groupKey)
+                    self.groups.append(group)
+                }
+                println("Groups appended. Count \(self.groups.count)")
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                    println("Async Table Reloaded")
+                })
+            }
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -74,7 +91,7 @@ class NewDiscussionGroupPickerViewController: UITableViewController {
             let indexPath = tableView.indexPathForCell(cell)
             selectedGroupIndex = indexPath?.row
             if let index = selectedGroupIndex {
-                selectedGroup = groups[index]
+                selectedGroup = groups[index].groupName
                 println(selectedGroup)
             }
         }

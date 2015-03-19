@@ -9,27 +9,60 @@
 
 import Foundation
 
-let feedDataURL = "http://10.12.4.41:8000/Feed.json"
-
 class DataManager {
     
+    
     class func loadDataFromURL(url: NSURL, completion:(data: NSData?, error: NSError?) -> Void) {
-        let urlPath: String = feedDataURL
-        var url: NSURL = NSURL(string: urlPath)!
-        var request1: NSURLRequest = NSURLRequest(URL: url)
-        var response: AutoreleasingUnsafeMutablePointer<NSURLResponse?
-        >=nil
-        var error: NSErrorPointer = nil
-        var dataVal: NSData =  NSURLConnection.sendSynchronousRequest(request1, returningResponse: response, error:nil)!
-        var err: NSError
-        var data: NSArray = NSJSONSerialization.JSONObjectWithData(dataVal, options: NSJSONReadingOptions.MutableContainers, error: nil) as NSArray
+        var session = NSURLSession.sharedSession()
+        
+        // Use NSURLSession to get data from an NSURL
+        let loadDataTask = session.dataTaskWithURL(url, completionHandler: { (data: NSData!, response: NSURLResponse!, error: NSError!) -> Void in
+            println("DATA: Request Made")
+            if let responseError = error {
+                completion(data: nil, error: responseError)
+            } else if let httpResponse = response as? NSHTTPURLResponse {
+                if httpResponse.statusCode != 200 {
+                    var statusError = NSError(domain:"http://ec2-52-11-124-82.us-west-2.compute.amazonaws.com/", code:httpResponse.statusCode, userInfo:[NSLocalizedDescriptionKey : "HTTP status code has unexpected value."])
+                    completion(data: nil, error: statusError)
+                } else {
+                    completion(data: data, error: nil)
+                }
+            }
+        })
+        loadDataTask.resume()
+    }
+
+    class func getFeedDataWithSuccess(success: ((feedData: NSData!) -> Void)) {
+        let feedDataURL = "http://ec2-52-11-124-82.us-west-2.compute.amazonaws.com/api/posts"
+        loadDataFromURL(NSURL(string: feedDataURL)!, completion:{(data, error) -> Void in
+            if let urlData = data {
+                success(feedData: urlData)
+            }
+        })
     }
     
-class func getFeedDataWithSuccess(success: ((feedData: NSData!) -> Void)) {
-    loadDataFromURL(NSURL(string: feedDataURL)!, completion:{(data, error) -> Void in
-        if let urlData = data {
-            success(feedData: urlData)
-        }
-    })
-  }
+    class func getPostDataWithSuccess(success: ((feedData: NSData!) -> Void)) {
+        //1
+        let feedDataURL = "http://ec2-52-11-124-82.us-west-2.compute.amazonaws.com/api/posts/1"
+        loadDataFromURL(NSURL(string: feedDataURL)!, completion:{(data, error) -> Void in
+            //2
+            if let urlData = data {
+                //3
+                success(feedData: urlData)
+            }
+        })
+    }
+    
+    class func getGroupsDataWithSuccess(success: ((groupsData: NSData!) -> Void)) {
+        //1
+        let groupsDataURL = "http://ec2-52-11-124-82.us-west-2.compute.amazonaws.com/api/groups"
+        loadDataFromURL(NSURL(string: groupsDataURL)!, completion:{(data, error) -> Void in
+            //2
+            if let urlData = data {
+                //3
+                success(groupsData: urlData)
+            }
+        })
+    }
+    
 }
