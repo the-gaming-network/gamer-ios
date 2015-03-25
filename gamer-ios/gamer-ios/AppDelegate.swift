@@ -15,10 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
-        // Override point for customization after application launch.
         FBLoginView.self
         FBProfilePictureView.self
         FBSession.openActiveSessionWithAllowLoginUI(false)
+        
+        let navbar = UINavigationBar.appearance()
+        navbar.barTintColor = UIColor(red: 47.0/255, green: 105.0/255, blue: 171.0/225, alpha: 1)
+        
+        let buttons = UIBarButtonItem.appearance()
+        buttons.tintColor = UIColor(red: 234.0/255, green: 240.0/255, blue: 246.0/225, alpha: 1)
         return true
     }
     

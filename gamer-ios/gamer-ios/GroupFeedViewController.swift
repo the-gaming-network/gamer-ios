@@ -1,34 +1,32 @@
 //
-//  FeedViewController.swift
+//  GroupFeedViewController.swift
 //  gamer-ios
 //
-//  Created by Ian Sikora on 3/12/15.
+//  Created by Ian Sikora on 3/22/15.
 //  Copyright (c) 2015 rocketu. All rights reserved.
 //
 
 import UIKit
 
-class FeedViewController: UITableViewController {
-
-    @IBOutlet var feedTableView: UITableView!
+class GroupFeedViewController: UITableViewController {
     
     var posts:[FeedPost] = []
     var selectedPostIndex:Int? = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("================   START FEED   ================")
-        println("FEED: viewDidLoad")
+        println("=============   START GROUP FEED   =============")
+        println("GROUP FEED: viewDidLoad")
         loadFeedData()
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        println("FEED: numberOfSectionsInTableView = 1")
+        println("GROUP FEED: numberOfSectionsInTableView = 1")
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println("FEED: numberOfRowsInSection = \(posts.count)")
+        println("GROUP FEED: numberOfRowsInSection = \(posts.count)")
         return posts.count
     }
     
@@ -36,7 +34,7 @@ class FeedViewController: UITableViewController {
     func loadFeedData(){
         DataManager.getFeedDataWithSuccess{ (feedData) -> Void in
             self.posts = []
-            println("FEED: API Request Returned")
+            println("GROUP FEED: API Request Returned")
             let json = JSON(data: feedData)
             if let feedArray = json.array {
                 for post in feedArray {
@@ -61,10 +59,10 @@ class FeedViewController: UITableViewController {
                     var post = FeedPost(userName: userName!, groupName: groupName!, postContent: postContent!, profileImage: profileImage!, commentCount: commentCount!, upvoteCount: upvoteCount!, postKey: postKey)
                     self.posts.append(post)
                 }
-                println("FEED: Posts appended = \(self.posts.count)")
+                println("GROUP FEED: Posts appended = \(self.posts.count)")
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.tableView.reloadData()
-                    println("FEED: Table Reloaded")
+                    println("GROUP FEED: Table Reloaded")
                 })
             }
         }
@@ -112,7 +110,7 @@ class FeedViewController: UITableViewController {
                 postDetailViewController.tempGroupName = post.groupName
                 postDetailViewController.tempUpvoteCount = post.upvoteCount
                 postDetailViewController.tempImage = post.profileImage
-
+                
             }
         }
     }
@@ -121,10 +119,12 @@ class FeedViewController: UITableViewController {
     @IBAction func cancelToFeedViewController(segue:UIStoryboardSegue) {
         
     }
-
+    
     @IBAction func saveNewDiscussion(segue:UIStoryboardSegue) {
         let newDiscussionDetailsViewController = segue.sourceViewController as NewDiscussionDetailsViewController
         loadFeedData()
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    
 }

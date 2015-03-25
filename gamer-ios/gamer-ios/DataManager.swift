@@ -9,8 +9,10 @@
 
 import Foundation
 
+
 class DataManager {
     
+    var postKey = 0
     
     class func loadDataFromURL(url: NSURL, completion:(data: NSData?, error: NSError?) -> Void) {
         var session = NSURLSession.sharedSession()
@@ -33,6 +35,8 @@ class DataManager {
     }
 
     class func getFeedDataWithSuccess(success: ((feedData: NSData!) -> Void)) {
+        
+        
         let feedDataURL = "http://ec2-52-11-124-82.us-west-2.compute.amazonaws.com/api/posts"
         loadDataFromURL(NSURL(string: feedDataURL)!, completion:{(data, error) -> Void in
             if let urlData = data {
@@ -41,25 +45,19 @@ class DataManager {
         })
     }
     
-    class func getPostDataWithSuccess(success: ((feedData: NSData!) -> Void)) {
-        //1
-        let feedDataURL = "http://ec2-52-11-124-82.us-west-2.compute.amazonaws.com/api/posts/1"
-        loadDataFromURL(NSURL(string: feedDataURL)!, completion:{(data, error) -> Void in
-            //2
+    class func getPostDataWithSuccess( success: ((postData: NSData!) -> Void)) {
+        let postDataURL = "http://ec2-52-11-124-82.us-west-2.compute.amazonaws.com/api/posts/"
+        loadDataFromURL(NSURL(string: postDataURL)!, completion:{(data, error) -> Void in
             if let urlData = data {
-                //3
-                success(feedData: urlData)
+                success(postData: urlData)
             }
         })
     }
     
     class func getGroupsDataWithSuccess(success: ((groupsData: NSData!) -> Void)) {
-        //1
         let groupsDataURL = "http://ec2-52-11-124-82.us-west-2.compute.amazonaws.com/api/groups"
         loadDataFromURL(NSURL(string: groupsDataURL)!, completion:{(data, error) -> Void in
-            //2
             if let urlData = data {
-                //3
                 success(groupsData: urlData)
             }
         })

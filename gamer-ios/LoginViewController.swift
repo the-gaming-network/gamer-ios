@@ -10,10 +10,12 @@ import UIKit
 class LoginViewController: UIViewController, FBLoginViewDelegate {
     
     @IBOutlet var fbLoginView: FBLoginView!
+    var net: Net!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        net = Net(baseUrlString: "http://ec2-52-11-124-82.us-west-2.compute.amazonaws.com/")
         
         self.fbLoginView.delegate = self
         self.fbLoginView.readPermissions = ["public_profile", "email", "user_friends"]
@@ -34,16 +36,69 @@ class LoginViewController: UIViewController, FBLoginViewDelegate {
         println("User Email: \(userEmail)")
         println("User Email: \(user)")
         var myToken = FBSession.activeSession().accessTokenData.accessToken
-        let net = Net(baseUrlString: "http://ec2-52-11-124-82.us-west-2.compute.amazonaws.com/")
-        let url = "rest-auth/facebook/"
-        let params = ["access_token": myToken]
-        println(params)
-        net.POST(url, params: params, successHandler: { responseData in
+
+        let fbUrl = "rest-auth/facebook/"
+        let fbParams = ["access_token": myToken]
+        println(fbParams)
+        net.POST(fbUrl, params: fbParams, successHandler: { responseData in
             let result = responseData.json(error: nil)
             NSLog("result: \(result)")
             }, failureHandler: { error in
                 NSLog("Error")
         })
+        
+//        let postUrl = "api/posts/"
+//        let postParams = ["owner": 1, "text": "I'm a big fan of this game", "group": 1]
+//        println(postParams)
+//        net.POST(postUrl, params: postParams, successHandler: { responseData in
+//            let result = responseData.json(error: nil)
+//            NSLog("result: \(result)")
+//            }, failureHandler: { error in
+//                NSLog("Error")
+//        })
+        
+//        let loginUrl = "rest-auth/login/"
+//        var loginParams = ["username":"ianjsikora", "password":"icowQfEqjHV7uqDVRLj2"] as Dictionary
+//        net.POST(loginUrl, params: loginParams, successHandler: { responseData in
+//            let result = responseData.json(error: nil)
+//            NSLog("result: \(result)")
+//            }, failureHandler: { error in
+//                NSLog("Error")
+//        })
+        
+//        func login() -> Void {
+//            var session = NSURLSession.sharedSession()
+//            var request = NSMutableURLRequest(URL: NSURL(string: "http://ec2-52-11-124-82.us-west-2.compute.amazonaws.com/api/posts/")!)
+//            request.HTTPMethod = "POST"
+//            var params = ["username":"ianjsikora", "password":"icowQfEqjHV7uqDVRLj2"]
+//            
+//            request.HTTPBody = params
+//            request.addValue("text/html", forHTTPHeaderField: "Content-Type")
+//            
+//            var task = session.dataTaskWithRequest(request, completionHandler: {(data, response, error) -> Void in
+//                println("Response: \(response)")
+//                println("Data: \(NSString(data: data, encoding: NSUTF8StringEncoding)))")
+//                let httpResponse = response as NSHTTPURLResponse
+//                var cookie = httpResponse.allHeaderFields["Set-Cookie"] as String
+//            })
+//            task.resume()
+//        }
+//        login()
+        
+//        let userName = "ianjsikora"
+//        let password = "icowQfEqjHV7uqDVRLj2"
+       
+//        let loginUrl = "rest-auth/login/"
+//        let loginParams = ["username": userName, "password": password]
+//        println(loginParams)
+
+//        net.POST(loginUrl, params: loginParams, successHandler: { responseData in
+//            let result = responseData.json(error: nil)
+//            NSLog("result: \(result)")
+//            }, failureHandler: { error in
+//                NSLog("Error")
+//        })
+        
     }
     
     func loginViewShowingLoggedOutUser(loginView : FBLoginView!) {
